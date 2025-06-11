@@ -26,16 +26,16 @@ public class PosApp {
             
             switch (mainMenu) {
                 case 1:
-                    OrderApp.run(sc); // 주문 모듈 실행
+                    OrderApp.run(sc); //주문 모듈 실행
                     break;
                 case 2:
-                    System.out.println("[메뉴관리]\n");
-                    break;
+                	MenuApp.run(sc); //메뉴관리
+                	break;
                 case 3:
-                    System.out.println("[카테고리관리]\n");
+                	CategoryMain.run(sc); //카테고리관리
                     break;
                 case 4:
-                    System.out.println("[매출표확인]\n");
+                	SaleApp.run(sc); //매출관리
                     break;
                 case 5:
                     System.out.println("프로그램을 종료합니다.");
