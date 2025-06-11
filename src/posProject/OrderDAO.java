@@ -92,7 +92,7 @@ public class OrderDAO {
         return cnt;
     }
 
-    // 조회 (전체 조회)
+    // 조회 (주문 전체 조회)
     public List<OrderVO> orderSelect() {
 
         List<OrderVO> aList = new ArrayList<>();
@@ -214,7 +214,68 @@ public class OrderDAO {
 
         return aList;
     }
+    
+    // 계산
+    public int orderUpdate(int tableId) {
+    	
+    	int cnt = -1;
 
+        this.connect();
+
+        try {
+        	String query1 = """
+	                select sum(b.unit_price * a.count) as sum_price
+	                from payment a
+	                join menu b
+	                  on a.menu_id = b.menu_id
+	                where a.payment = 'N'
+	                  and a.table_id = ?
+                    """;
+            query1 = query1.stripIndent().strip();
+
+            pstmt = conn.prepareStatement(query1);
+            pstmt.setInt(1, tableId);
+            
+            System.out.println();
+
+            rs = pstmt.executeQuery();
+            
+            int totalPrice = 0;
+            if (rs.next()) {
+                totalPrice = rs.getInt("sum_price");
+                System.out.println("총 결제 금액: " + totalPrice + "원");
+            }
+            
+            System.out.println();
+            
+            String query2 = """
+                    update payment
+					set payment = 'Y'
+					where table_id = ?
+					  and payment = 'N'
+                    """;
+            query2 = query2.stripIndent().strip();
+
+            pstmt = conn.prepareStatement(query2);
+            pstmt.setInt(1, tableId);
+
+            System.out.println(bindQuery(query2, tableId));
+
+            // 실행
+            cnt = pstmt.executeUpdate();
+
+            System.out.println(cnt + " 건이 계산 되었습니다.");
+            System.out.println();
+
+        } catch (SQLException e) {
+            System.out.println("error:" + e);
+        }
+
+        this.close();
+
+        return cnt;
+    }
+    
     // Helper method for binding query for print
     public static String bindQuery(String query, Object... params) {
         for (Object param : params) {

@@ -1,49 +1,56 @@
 use pos_db;
 
+show tables;
+select * from information_schema.columns where table_name = 'payment';
 
--- category 테이블 생성
-create table category(
-	category_id		integer			primary key		auto_increment,
-    category_name	varchar(20)		not null,
-    category_emoji	varchar(10),
-    category_desc	varchar(200)
-);
+show columns from category;
+show columns from menu;
+show full columns from payment;
 
--- menu 테이블 생성
-create table menu(
-	menu_id		integer			primary key		auto_increment,
-    menu_name	varchar(20)		not null,
-    unit_price	integer,
-    menu_show	varchar(10),
-    menu_delete	varchar(10),
-    category_id	integer,
-    CONSTRAINT menu_fk FOREIGN KEY (category_id)
-	REFERENCES category(category_id)
-);
+select * from category;
+select * from menu;
+select * from payment;
 
-
-
--- payment 테이블 생성
-create table payment(
-    order_no	integer		primary key 	auto_increment,
-    count		integer,
-    payment		varchar(10),
-    pay_date	datetime,
-    table_id	integer,
-    menu_id		integer,
-    CONSTRAINT payment_fk FOREIGN KEY (menu_id)
-	REFERENCES menu(menu_id)
-);
+select order_no,
+    count,
+    payment,
+    pay_date,
+    table_id,
+    menu_id
+from payment
+where pay_date = '20200320'
+;
 
 
+                    select a.order_no,
+                           a.table_id,
+                           b.menu_name,
+                           a.count,
+                           a.payment,
+                           a.pay_date
+                      from payment a
+                      	join menu b
+                          on a.menu_id = b.menu_id
+;
 
+select * from payment;
 
-commit;
+select * from menu;
 
+select * from category;
 
--- 지우기
-drop table category;
-drop table menu;
-drop table payment;
+select *
+from menu a
+    join category b
+    on a.category_id = b.category_id
+;
 
-
+select a.menu_id,
+					    b.category_name,
+					    a.menu_name,
+					    a.unit_price
+					from menu a
+					join category b
+					  on a.category_id = b.category_id
+					 and menu_show != '숨기기'
+					 and menu_delete != '삭제됨'

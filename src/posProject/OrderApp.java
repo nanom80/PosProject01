@@ -23,7 +23,8 @@ public class OrderApp {
             
             System.out.println("1. 주문 등록");
             System.out.println("2. 주문 목록 확인");
-            System.out.println("3. 종료");
+            System.out.println("3. 계산");
+            System.out.println("4. 종료");
             System.out.print("> 메뉴번호: ");
             
             int menuNum = sc.nextInt();
@@ -84,7 +85,14 @@ public class OrderApp {
                 orderDAO.orderSelect();
                 
             } else if (menuNum == 3) {
-                System.out.println("<3. 종료>");
+                System.out.println("<3. 결제>");
+                System.out.println("테이블번호:");
+                int count = sc.nextInt();
+                sc.nextLine();
+                orderDAO.orderUpdate(count);
+            
+            } else if (menuNum == 4) {
+                System.out.println("<4. 종료>");
                 System.out.println("프로그램을 종료합니다.");
                 break;
 
