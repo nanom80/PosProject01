@@ -16,7 +16,7 @@ public class SaleDAO {
     private ResultSet rs = null;
 
     private String driver = "com.mysql.cj.jdbc.Driver";
-    private String url = "jdbc:mysql://localhost:3306/pos_db";
+    private String url = "jdbc:mysql://192.168.0.99:3306/pos_db";
     private String id = "pos";
     private String pw = "pos";
     
@@ -54,19 +54,63 @@ public class SaleDAO {
         System.out.println("자원정리");    	
     }
     
+    
+    //생성
+    public int saleInsert(int day, String categoryName) {
+
+		int count = -1;
+
+		// 0. import java.sql.*;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		this.connect();
+
+		try {
+			
+			// 3. SQL문 준비 / 바인딩 / 실행
+			// SQL문 준비
+			String query = "";
+			query += " insert into food ";
+			query += " values( ?, ?) ";
+			System.out.println(query);
+
+			// 바인딩
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, day); // 메소드의 파라미터
+			pstmt.setString(2, categoryName); // 메소드의 파라미터
+
+			// 실행
+			count = pstmt.executeUpdate();
+
+			// 4.결과처리
+			System.out.println(count + "건 등록");
+
+		} catch (SQLException e) {
+			System.out.println("error:" + e);
+		} 
+		
+		this.close();
+		
+		return count;
+	}
+    
     // 조회
     public List<SaleVO> saleselect(){
-    
+    	System.out.println("aaaa");
     	List<SaleVO> sList = new ArrayList<> ();
         
     	this.connect();
     	
     	try {
     		String query ="""
-    				select day,
-    					   sale,
-    					   oneDaySale
-    				from food	   
+						select day,
+						       category_name,
+						       sale
+						from food a
+						join category b
+						on a.category_id = b.category_id
     				""";
     		query = query.stripIndent().strip();
     		
@@ -79,18 +123,84 @@ public class SaleDAO {
     		rs = pstmt.executeQuery();
     		
     		while(rs.next()) {    		
-    			int day = rs.getInt("day");
+    			String day = rs.getString("day");
+    			String categoryName = rs.getString("category_name");
     			int sale = rs.getInt("sale");
-    			int oneDaySale = rs.getInt("oneDaySale");
     			
-    			SaleVO saleVo = new SaleVO(day, sale, oneDaySale);
+    			SaleVO saleVo = new SaleVO(day, categoryName, sale);
     			
     			sList.add(saleVo);
     		}
     		for(SaleVO saleVO : sList) {
-    			System.out.println(saleVO.getDay()+"\t");
-    			System.out.println(saleVO.getSale()+"\t");
-    			System.out.println(saleVO.getOneDaySale()+"\t");
+    			System.out.println("4.매출표확인 > 1.카테고리별 매출표 확인");
+				System.out.println("");
+				
+				System.out.println("=======================================");
+				System.out.println("	  <조회되었습니다>    ");
+				
+				
+    			System.out.print(saleVO.getDay()+"\t");
+    			System.out.print(saleVO.getCategory_name()+"\t");
+    			System.out.println(saleVO.getSale());
+    			
+				
+    		}
+    		System.out.println(sList.size()+" 건이 조회되었습니다.");
+    		System.out.println();
+    	}catch (SQLException e) {
+            System.out.println("error:" + e);
+		}
+    	
+    	
+    	this.close();
+    	
+    	return sList;
+    }
+    
+    public List<SaleVO> Dayselect(){
+    	List<SaleVO> sList = new ArrayList<> ();
+        
+    	this.connect();
+    	
+    	try {
+    		String query ="""
+						select day,
+						       sale
+						from food a
+						join category b
+						on a.category_id = b.category_id
+    				""";
+    		query = query.stripIndent().strip();
+    		
+    		pstmt = conn.prepareStatement(query);
+    		
+    		System.out.println(query);
+
+    		System.out.println();
+    		
+    		rs = pstmt.executeQuery();
+    		
+    		while(rs.next()) {    		
+    			String day = rs.getString("day");
+    			//String categoryName = rs.getString("category_name");
+    			int sale = rs.getInt("sale");
+    			
+    			//SaleVO saleVo = new SaleVO(day, categoryName, sale);
+    			SaleVO saleVo = new SaleVO(day, sale);
+    			
+    			sList.add(saleVo);
+    		}
+    		for(SaleVO saleVO : sList) {
+    			System.out.println("4.매출표확인 > 1.일별 매출표 확인");
+				System.out.println("");
+				System.out.println("날짜\t"+"        매출");
+				
+				System.out.print(saleVO.getDay()+"\t");
+    			System.out.println(saleVO.getSale());
+    			
+				System.out.println("=======================================");
+				System.out.println("	  <조회되었습니다>    ");
+				
     		}
     		System.out.println(sList.size()+" 건이 조회되었습니다.");
     		System.out.println();

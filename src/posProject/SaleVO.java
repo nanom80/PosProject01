@@ -4,26 +4,40 @@ package posProject;
 public class SaleVO {
 
 	//필드
-	private int day; //일별 날짜
-	private int sale; //판매
-	private int oneDaySale; //일별 매출
+	private String day; //날짜별 매출
+	private String category_name; //카테고리별 매출
+	private int sale;
 	
 	//생성자
 	public SaleVO() {	}
 	
-	public SaleVO(int day, int sale, int oneDaySale) {
+	public SaleVO(String day, int sale) {
 		this.day = day;
 		this.sale = sale;
-		this.oneDaySale = oneDaySale;
+	}
+	
+	public SaleVO(String day, String category_name, int sale) {
+		this.day = day;
+		this.category_name = category_name;
+		this.sale = sale;
 	}
 
 	//메소드gs
-	public int getDay() {
+
+	public String getDay() {
 		return day;
 	}
 
-	public void setDay(int day) {
+	public void setDay(String day) {
 		this.day = day;
+	}
+
+	public String getCategory_name() {
+		return category_name;
+	}
+
+	public void setCategory_name(String category_name) {
+		this.category_name = category_name;
 	}
 
 	public int getSale() {
@@ -34,17 +48,11 @@ public class SaleVO {
 		this.sale = sale;
 	}
 
-	public int getOneDaySale() {
-		return oneDaySale;
-	}
-
-	public void setOneDaySale(int oneDaySale) {
-		this.oneDaySale = oneDaySale;
-	}
-	
-	//메소드 일반
 	@Override
 	public String toString() {
-		return "SaleVO [day=" + day + ", sale=" + sale + ", oneDaySale=" + oneDaySale + "]";
+		return "SaleVO [day=" + day + ", category_name=" + category_name + ", sale=" + sale + "]";
 	}
+	
+	
+	
 }

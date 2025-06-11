@@ -33,17 +33,13 @@ public class SaleApp {
 			
 			int sale = sc.nextInt();
 			sc.nextLine(); // 줄바꿈 처리
-
+			
+			
+			
 			if (sale == 1) {
 
-				System.out.println("4.매출표확인 > 1.카테고리별 매출표 확인");
-				System.out.println("");
-				System.out.println("카테고리  "+"\t"+"  매출");
-				System.out.println("분식류  "+"\t "+"   ");
-				System.out.println("주류  "+"\t "+"   ");
-				System.out.println("식사류 "+"\t "+"   ");
-				System.out.println("=======================================");
-				System.out.println("	  <조회되었습니다>    ");
+				// DAO 호출
+				List<SaleVO> result = saleDAO.saleselect();
 				
 				String food = sc.nextLine();
 				sc.nextLine();
@@ -60,23 +56,13 @@ public class SaleApp {
 				String saleDate = LocalDate.now().toString();
 				System.out.println("카테고리별 매출표: " + saleDate);
 
-				
-				
-				// DAO 호출
-				List<SaleVO> result = saleDAO.saleselect();
-
 			} else if (sale == 2) {
 				// <2.날짜별 매출표 확인>
-
+				
 				System.out.println("4.매출표확인 > 2.날짜별 매출표 확인");
 				
-				System.out.println("");
-				System.out.println("날짜	"+"\t"+"매출");
-				System.out.println("집계한 날짜:");
-				System.out.println("01월 02일:");
-				System.out.println("01월 03일:");
-				System.out.println("====================================");
-				System.out.println("	<조회되었습니다>	");
+				// DAO 호출
+				List<SaleVO> result = saleDAO.Dayselect();
 				
 				int oneDaySale = sc.nextInt();
 				sc.nextLine();
