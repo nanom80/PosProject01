@@ -158,9 +158,9 @@ public class OrderDAO {
     }
     
     // 메뉴조회
-    public List<MenuVO> menuSelect() {
+    public List<OrderVO> menuSelect() {
 
-        List<MenuVO> aList = new ArrayList<>();
+        List<OrderVO> aList = new ArrayList<>();
 
         this.connect();
 
@@ -192,16 +192,16 @@ public class OrderDAO {
                 String menuName = rs.getString("menu_name");
                 int unitPrice = rs.getInt("unit_price");
                 
-                MenuVO menuVO = new MenuVO(menuId, categoryName, menuName, unitPrice);
+                OrderVO orderVO = new OrderVO(menuId, categoryName, menuName, unitPrice);
 
-                aList.add(menuVO);
+                aList.add(orderVO);
             }
 
-            for (MenuVO menuVO : aList) {
-                System.out.println(menuVO.getMenuId() + "\t" +
-                				   menuVO.getCategoryName() + "\t" +
-                				   menuVO.getMenuName() + "\t" +
-                				   menuVO.getUnitPrice());
+            for (OrderVO orderVO : aList) {
+                System.out.println(orderVO.getMenuId() + "\t" +
+                		orderVO.getCategoryName() + "\t" +
+                		orderVO.getMenuName() + "\t" +
+                		orderVO.getUnitPrice());
             }
             
             System.out.println();
