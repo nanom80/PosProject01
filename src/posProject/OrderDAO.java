@@ -106,7 +106,7 @@ public class OrderDAO {
                            b.menu_name,
                            a.count,
                            a.payment,
-                           a.pay_date
+                           date_format(a.pay_date,'%Y-%m-%d') pay_date
                     from payment a
                         join menu b
                           on a.menu_id = b.menu_id
@@ -265,6 +265,42 @@ public class OrderDAO {
             cnt = pstmt.executeUpdate();
 
             System.out.println(cnt + " 건이 계산 되었습니다.");
+            System.out.println();
+
+        } catch (SQLException e) {
+            System.out.println("error:" + e);
+        }
+
+        this.close();
+
+        return cnt;
+    }
+    
+    // 주문 삭제
+    public int orderDelete(int orderNo) {
+    	
+        int cnt = -1;
+        
+        this.connect();
+        
+        try {
+            String query = """
+                    update payment
+					set payment = 'X'
+					where order_no = ?
+					  and payment = 'N'
+                    """;
+            query = query.stripIndent().strip();
+
+            pstmt = conn.prepareStatement(query);
+            pstmt.setInt(1, orderNo);
+
+            System.out.println(bindQuery(query, orderNo));
+
+            // 실행
+            cnt = pstmt.executeUpdate(); // 수정!
+
+            System.out.println(cnt + " 건이 삭제되었습니다.");
             System.out.println();
 
         } catch (SQLException e) {

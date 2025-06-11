@@ -6,17 +6,17 @@ import java.time.LocalDate;
 
 public class OrderApp {
 	
-	public static void main(String[] args) throws IOException {
-		
+	//public static void main(String[] args) throws IOException {
+	public static void run(Scanner sc) throws IOException {
 		// DAO 준비
 		OrderDAO orderDAO = new OrderDAO();
 		
 		//키보드 준비
-		Scanner sc = new Scanner(System.in);
+		//Scanner sc = new Scanner(System.in);
 		
 		while (true) {
             System.out.println("**************************************");
-            System.out.println("*           주문 프로그램             *");
+            System.out.println("*                주문                *");
             System.out.println("**************************************");
             
             orderDAO.menuSelect();
@@ -24,7 +24,8 @@ public class OrderApp {
             System.out.println("1. 주문 등록");
             System.out.println("2. 주문 목록 확인");
             System.out.println("3. 계산");
-            System.out.println("4. 종료");
+            System.out.println("4. 주문 삭제");
+            System.out.println("5. 이전으로 돌아가기");
             System.out.print("> 메뉴번호: ");
             
             int menuNum = sc.nextInt();
@@ -86,24 +87,28 @@ public class OrderApp {
                 
             } else if (menuNum == 3) {
                 System.out.println("<3. 결제>");
-                System.out.println("테이블번호:");
+                System.out.print("테이블번호:");
                 int count = sc.nextInt();
                 sc.nextLine();
                 orderDAO.orderUpdate(count);
             
             } else if (menuNum == 4) {
-                System.out.println("<4. 종료>");
-                System.out.println("프로그램을 종료합니다.");
+                System.out.println("<4. 주문 취소>");
+                System.out.print("주문번호:");
+                int count = sc.nextInt();
+                sc.nextLine();
+                orderDAO.orderDelete(count);
+            
+            }else if (menuNum == 5) {
+                System.out.println("<5. 이전>");
+                System.out.println("이전 메뉴로 돌아갑니다.");
                 break;
 
             } else {
                 System.out.println("유효하지 않은 메뉴번호입니다. 다시 입력해주세요.\n");
             }
         }
-
-        // 키보드 해제
-        sc.close();
-        
+		
 	}
 
 }
