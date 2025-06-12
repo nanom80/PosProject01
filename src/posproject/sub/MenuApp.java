@@ -216,13 +216,13 @@ public class MenuApp {
 			final int widthShow = 10;
 			
 	        //System.out.println("[3.카테고리 관리]");
-			System.out.println("----------------------------------------------------------------------");
+			System.out.println("------------------------------------------------------------------");
 			//System.out.println("|      |              |        |                                        |");
 			System.out.println("|" + TextUtil.padRightDisplay("번호", widthId) + "|"
 					+ TextUtil.padRightDisplay("카테고리명", widthName) + "|" + TextUtil.padRightDisplay("메뉴명", widthEmoji)
 					+ "|" + TextUtil.padRightDisplay("단가", widthDesc) + "|" + TextUtil.padRightDisplay("상태", widthDesc) + "|");
 			//System.out.println("|______|______________|________|________________________________________|");
-			System.out.println("----------------------------------------------------------------------");
+			System.out.println("------------------------------------------------------------------");
 			
 	        for (MenuVO menu : menuList) {
 	        	
@@ -234,14 +234,14 @@ public class MenuApp {
 				
 	        }
 	        
-	        System.out.println("----------------------------------------------------------------------");
+	        System.out.println("------------------------------------------------------------------");
 	        //System.out.println("1.메뉴 추가하기    2.메뉴 삭제하기    3.메뉴 수정하기    4.메뉴숨기기/보이기    0.되돌아가기");
 	        System.out.println("1.메뉴 추가하기");
 	        System.out.println("2.메뉴 삭제하기");
 	        System.out.println("3.메뉴 수정하기");
 	        System.out.println("4.메뉴숨기기/보이기");
 	        System.out.println("0.되돌아가기");
-	        System.out.println("----------------------------------------------------------------------");
+	        System.out.println("------------------------------------------------------------------");
 	        break;
         }
     }

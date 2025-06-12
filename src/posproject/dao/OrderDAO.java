@@ -29,7 +29,7 @@ public class OrderDAO {
 
     // DB연결
     private void connect() {
-        System.out.println("DB연결");
+        //System.out.println("DB연결");
         try {
             Class.forName(driver);
             this.conn = DriverManager.getConnection(url, id, pw);
@@ -55,7 +55,7 @@ public class OrderDAO {
         } catch (SQLException e) {
             System.out.println("error:" + e);
         }
-        System.out.println("자원정리");
+        //System.out.println("자원정리");
     }
 
     // 입력
@@ -70,7 +70,7 @@ public class OrderDAO {
                     insert into payment
                     values(null, ?, ?, ?, ?, ?)
                     """;
-            query = query.stripIndent().strip();
+            //query = query.stripIndent().strip();
 
             pstmt = conn.prepareStatement(query);
             pstmt.setInt(1, count);
@@ -225,7 +225,7 @@ public class OrderDAO {
 
             rs = pstmt.executeQuery();
             
-            System.out.println("번호\t카테고리\t메뉴\t가격");
+            //System.out.println("번호\t카테고리\t메뉴\t가격");
             
             while (rs.next()) {
                 int menuId = rs.getInt("menu_id");
@@ -295,7 +295,7 @@ public class OrderDAO {
 	                where a.payment = 'N'
 	                  and a.table_id = ?
                     """;
-            query1 = query1.stripIndent().strip();
+            //query1 = query1.stripIndent().strip();
 
             pstmt = conn.prepareStatement(query1);
             pstmt.setInt(1, tableId);
@@ -318,7 +318,7 @@ public class OrderDAO {
 					where table_id = ?
 					  and payment = 'N'
                     """;
-            query2 = query2.stripIndent().strip();
+            //query2 = query2.stripIndent().strip();
 
             pstmt = conn.prepareStatement(query2);
             pstmt.setInt(1, tableId);
@@ -354,7 +354,7 @@ public class OrderDAO {
 					where order_no = ?
 					  and payment = 'N'
                     """;
-            query = query.stripIndent().strip();
+            //query = query.stripIndent().strip();
 
             pstmt = conn.prepareStatement(query);
             pstmt.setInt(1, orderNo);
