@@ -1,7 +1,12 @@
-package posProject;
+package posproject;
 
 import java.io.IOException;
 import java.util.Scanner;
+
+import posproject.sub.CategoryMain;
+import posproject.sub.MenuApp;
+import posproject.sub.OrderApp;
+import posproject.sub.SaleApp;
 
 public class PosApp {
 
@@ -11,9 +16,9 @@ public class PosApp {
         Scanner sc = new Scanner(System.in);
         
         while (true) {
-            System.out.println("=====================================");
-            System.out.println("*                POS                *");
-            System.out.println("=====================================");
+        	System.out.println("**************************************");
+            System.out.println("*                POS                 *");
+            System.out.println("**************************************");
             System.out.println("1. 주문");
             System.out.println("2. 메뉴관리");
             System.out.println("3. 카테고리관리");
@@ -26,7 +31,8 @@ public class PosApp {
             
             switch (mainMenu) {
                 case 1:
-                    OrderApp.run(sc); //주문 모듈 실행
+                	OrderApp orderApp = new OrderApp();
+                	orderApp.run(sc); //주문 모듈 실행
                     break;
                 case 2:
                 	MenuApp.run(sc); //메뉴관리

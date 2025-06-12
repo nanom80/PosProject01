@@ -1,4 +1,4 @@
-package posProject;
+package posproject.vo;
 
 public class MenuVO {
 	private int menuId;

@@ -1,4 +1,4 @@
-package posProject;
+package posproject.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import posproject.vo.OrderVO;
 
 public class OrderDAO {
 
@@ -110,6 +112,8 @@ public class OrderDAO {
                     from payment a
                         join menu b
                           on a.menu_id = b.menu_id
+                    order by a.pay_date,
+                    		a.table_id, a.order_no
                     """;
             query = query.stripIndent().strip();
 

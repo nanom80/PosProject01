@@ -1,8 +1,10 @@
-package posProject;
+package posproject.dao;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import posproject.vo.MenuVO;
 
 public class MenuDAO {
     // Connection 얻기

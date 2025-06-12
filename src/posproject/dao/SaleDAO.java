@@ -1,4 +1,4 @@
-package posProject;
+package posproject.dao;
 
 
 import java.sql.Connection;
@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import posproject.vo.SaleVO;
 
 public class SaleDAO {
 

@@ -1,8 +1,11 @@
-package posProject;
+package posproject.sub;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
+
+import posproject.dao.CategoryDAO;
+import posproject.vo.CategoryVO;
 
 public class CategoryMain {
 

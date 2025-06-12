@@ -1,4 +1,4 @@
-package posProject;
+package posproject.vo;
 
 //데이터 담는 전용박스
 public class SaleVO {

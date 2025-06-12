@@ -1,9 +1,11 @@
-package posProject;
+package posproject.sub;
 
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
+
+import posproject.dao.SaleDAO;
 
 public class SaleApp {
 
@@ -22,7 +24,6 @@ public class SaleApp {
 		while (true) {
 			System.out.println("0.매출표 집계");
 			System.out.println("1.카테고리별 매출표 확인");
-			
 			System.out.println("2.날짜별 매출표 확인");
 			System.out.println("3.이전으로 돌아가기");
 			System.out.print("입력> ");
@@ -36,9 +37,10 @@ public class SaleApp {
 			    String yesterday = LocalDate.now().minusDays(1).toString();
 
 			    // DAO 호출
+			    //List<SaleVO> result = saleDAO.DayInsert(yesterday);
 			    saleDAO.DayInsert(yesterday);
 				
-				String food = sc.nextLine();
+				sc.nextLine();
 				
 				continue;  // 다시 매출 메뉴로
 				
@@ -93,7 +95,6 @@ public class SaleApp {
 				continue;  // 다시 매출 메뉴로
 
 			} else if (sale == 3) {
-	                System.out.println("5.이전");
 	                System.out.println("이전 메뉴로 돌아갑니다.");
 	                break;
 			} else {
