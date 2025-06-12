@@ -74,7 +74,7 @@ public class SaleApp {
 				System.out.println();
 			}
 		} // while 끝남
-
+		
 		// 스트림 닫기
 		// br.close();
 		// sc.close();

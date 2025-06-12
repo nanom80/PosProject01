@@ -12,7 +12,7 @@ public class CategoryVO {
 	public CategoryVO() {
 		super();
 	}
-
+	
 	public CategoryVO(String categoryStatus) {
 		super();
 		this.categoryStatus = categoryStatus;

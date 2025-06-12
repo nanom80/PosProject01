@@ -8,9 +8,7 @@ public class MenuVO {
     private String menuDelete;
     private int categoryId;          
     private String categoryName;
-    
-
-    
+        
     // getter/setter
     
 

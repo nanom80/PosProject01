@@ -11,7 +11,6 @@ public class CategoryMain {
 		//Scanner sc = new Scanner(System.in);
 		CategoryDAO categoryDAO = new CategoryDAO();
 		
-
 		String format = "|%8s|%18s|%7s|%27s|\n";
 		String line = "=".repeat(82);
 		

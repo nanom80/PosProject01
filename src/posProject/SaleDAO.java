@@ -208,7 +208,6 @@ public class SaleDAO {
             System.out.println("error:" + e);
 		}
     	
-    	
     	this.close();
     	
     	return sList;

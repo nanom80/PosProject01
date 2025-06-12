@@ -196,8 +196,7 @@ public class MenuApp {
 
         //sc.close();
     }
-
-    
+	
     //------------------------------------------------------------
     public static void showMenuList(MenuDAO menuDAO) {
         List<MenuVO> menuList = menuDAO.menuList();

@@ -13,7 +13,6 @@ public class OrderVO {
 	private String categoryName;
 	private int unitPrice;
 	
-	
 	//생성자
 	public OrderVO() {
 		super();

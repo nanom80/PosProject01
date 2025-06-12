@@ -22,7 +22,7 @@ public class MenuDAO {
         ResultSet rs = null;
 
         try {
-            // 1. 드라이버 로딩 및 DB 연결
+            // 1. 드라이버 로딩 및 DB 연결 
             Class.forName("com.mysql.cj.jdbc.Driver");
             
             String url = "jdbc:mysql://192.168.0.99:3306/pos_db";

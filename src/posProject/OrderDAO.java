@@ -276,7 +276,7 @@ public class OrderDAO {
         return cnt;
     }
     
-    // 주문 삭제
+    // 주문 삭제 
     public int orderDelete(int orderNo) {
     	
         int cnt = -1;

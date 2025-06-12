@@ -11,7 +11,7 @@ public class OrderApp {
 		// DAO 준비
 		OrderDAO orderDAO = new OrderDAO();
 		
-		//키보드 준비
+		//키보드 준비 
 		//Scanner sc = new Scanner(System.in);
 		
 		while (true) {

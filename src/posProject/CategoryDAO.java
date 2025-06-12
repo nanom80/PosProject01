@@ -13,7 +13,7 @@ public class CategoryDAO {
 	private Connection conn = null;
 	PreparedStatement pstmt = null;
 	private ResultSet rs = null;
-
+	
 	private String Driver = "com.mysql.cj.jdbc.Driver";
 	private String Url = "jdbc:mysql://localhost:3306/pos_db";
 	private String Id = "pos";
