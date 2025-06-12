@@ -5,7 +5,7 @@ public class SaleVO {
 
 	//필드
 	private String day; //날짜별 매출
-	private String category_name; //카테고리별 매출
+	private String categoryName; //카테고리별 매출
 	private int sale;
 	
 	//생성자
@@ -16,9 +16,9 @@ public class SaleVO {
 		this.sale = sale;
 	}
 	
-	public SaleVO(String day, String category_name, int sale) {
+	public SaleVO(String day, String categoryName, int sale) {
 		this.day = day;
-		this.category_name = category_name;
+		this.categoryName = categoryName;
 		this.sale = sale;
 	}
 
@@ -32,12 +32,12 @@ public class SaleVO {
 		this.day = day;
 	}
 
-	public String getCategory_name() {
-		return category_name;
+	public String getCategoryName() {
+		return categoryName;
 	}
 
-	public void setCategory_name(String category_name) {
-		this.category_name = category_name;
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
 
 	public int getSale() {
@@ -50,8 +50,9 @@ public class SaleVO {
 
 	@Override
 	public String toString() {
-		return "SaleVO [day=" + day + ", category_name=" + category_name + ", sale=" + sale + "]";
+		return "SaleVO [day=" + day + ", categoryName=" + categoryName + ", sale=" + sale + "]";
 	}
+	
 	
 	
 }
