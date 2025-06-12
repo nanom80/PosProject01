@@ -31,9 +31,12 @@ public class SaleApp {
 			int sale = sc.nextInt();
 			//sc.nextLine(); // 줄바꿈 처리
 			if (sale == 0) {
+				
+				// 어제 날짜 구하기
+			    String yesterday = LocalDate.now().minusDays(1).toString();
 
-				// DAO 호출
-				saleDAO.DayInsert();
+			    // DAO 호출
+			    saleDAO.DayInsert(yesterday);
 				
 				String food = sc.nextLine();
 				

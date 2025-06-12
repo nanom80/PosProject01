@@ -108,10 +108,13 @@ public class SaleDAO {
     		String query ="""
 						select day,
 						       category_name,
-						       sale
+						       sum(sale) sale
 						from food a
 						join category b
 						on a.category_id = b.category_id
+						group by day,
+						       category_name
+						order by day
     				""";
     		query = query.stripIndent().strip();
     		
@@ -160,10 +163,12 @@ public class SaleDAO {
     	try {
     		String query ="""
 						select day,
-						       sale
+						       sum(sale) sale
 						from food a
 						join category b
 						on a.category_id = b.category_id
+						group by day
+						order by day
     				""";
     		query = query.stripIndent().strip();
     		
@@ -207,7 +212,7 @@ public class SaleDAO {
     	return sList;
     }
 
-    public void DayInsert(){
+    public void DayInsert(String pay_date){
     	
     	this.connect();
     	
@@ -232,14 +237,15 @@ public class SaleDAO {
 						from payment a
 						join menu b
 						on a.menu_id = b.menu_id
-						where pay_date = '2025-06-10'
+						where pay_date = ?
 						group by pay_date, category_id
     					""";
     		
     		query = query.stripIndent().strip();
     		
     		pstmt = conn.prepareStatement(query);
-    		
+    		pstmt.setString(1, pay_date);
+			
     		System.out.println(query);
     		System.out.println();
     		
