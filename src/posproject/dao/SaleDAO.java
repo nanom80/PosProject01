@@ -139,12 +139,13 @@ public class SaleDAO {
     		}
     		System.out.println("4.매출표확인 > 1.카테고리별 매출표 확인");
 			System.out.println("");
+			System.out.println("날짜\t\t카테고리\t매출");
     		for(SaleVO saleVO : sList) {
     			System.out.print(saleVO.getDay()+"\t");
     			System.out.print(saleVO.getCategoryName()+"\t");
     			System.out.println(saleVO.getSale());
     		}
-    		System.out.println("=======================================");
+    		System.out.println("-------------------------------------------------------------------------------------");
     		System.out.println(sList.size()+" 건이 조회되었습니다.");
     		System.out.println();
     	}catch (SQLException e) {
@@ -201,7 +202,7 @@ public class SaleDAO {
     			System.out.print(saleVO.getDay()+"\t");   // 일별,카테고리별 매출표 확인가능!
     			System.out.println(saleVO.getSale());
     		}
-    		System.out.println("=======================================");
+    		System.out.println("-------------------------------------------------------------------------------------");
     		System.out.println(sList.size()+" 건이 조회되었습니다.");
     		System.out.println();
     	}catch (SQLException e) {

@@ -28,9 +28,9 @@ public class OrderApp {
 		//Scanner sc = new Scanner(System.in);
 		
 		while (true) {
-            System.out.println("=====================================");
-            System.out.println("*                주문                *");
-            System.out.println("=====================================");
+			System.out.println("------------------------------------------------------------------");
+            System.out.println("|                               주문                              |");
+            System.out.println("------------------------------------------------------------------");
             
             orderDAO.menuSelect();
             

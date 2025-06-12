@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import posproject.TextUtil;
+import posproject.vo.CategoryVO;
 import posproject.vo.OrderVO;
 
 public class OrderDAO {
@@ -125,7 +127,7 @@ public class OrderDAO {
 
             rs = pstmt.executeQuery();
             
-            System.out.println("주문번호\t테이블\t메뉴\t수량\t지불여부\t결제일자");
+            //System.out.println("주문번호\t테이블\t메뉴\t수량\t지불여부\t결제일자");
             
             while (rs.next()) {
                 int orderNo = rs.getInt("order_no");
@@ -139,7 +141,40 @@ public class OrderDAO {
 
                 aList.add(orderVO);
             }
+            
+            OrderVO ordervo = new OrderVO();
+            
+            final int widthOrderNo = 8;
+            final int widthTableId = 8;
+    		final int widthMenuName = 15;
+    		final int widthCount = 8;
+    		final int widthPayment = 8;
+    		final int widthpayDate = 10;
 
+    		String line = "-".repeat(widthOrderNo + widthTableId + widthMenuName + widthCount + widthPayment + widthpayDate + 5);
+    		
+    		System.out.println(line);
+    		//System.out.println("|      |              |        |                                        |");
+    		System.out.println("|" + TextUtil.padRightDisplay("주문번호", widthOrderNo) + "|"
+    				+ TextUtil.padRightDisplay("테이블", widthTableId) + "|"
+    				+ TextUtil.padRightDisplay("메뉴", widthMenuName)+ "|"
+    				+ TextUtil.padRightDisplay("수량", widthCount)+ "|"
+    				+ TextUtil.padRightDisplay("지불여부", widthPayment)+ "|"
+    				+ TextUtil.padRightDisplay("결제일자", widthpayDate) + "|");
+    		//System.out.println("|______|______________|________|________________________________________|");
+    		System.out.println(line);
+
+    		for (OrderVO vo : aList) {
+    			System.out.println("|" + TextUtil.padRightDisplay(String.valueOf(vo.getOrderNo()), widthOrderNo) + "|"
+    					+ TextUtil.padRightDisplay(vo.getTableId(), widthTableId) + "|"
+    					+ TextUtil.padRightDisplay(vo.getMenuName(), widthMenuName) + "|"
+    					+ TextUtil.padRightDisplay(vo.getCount(), widthCount) + "|"
+    					+ TextUtil.padRightDisplay(vo.getPayment(), widthPayment) + "|"
+    					+ TextUtil.padRightDisplay(vo.getPayDate(), widthpayDate) + "|"
+    					);
+    		}
+    		
+    		/*
             for (OrderVO orderVO : aList) {
                 System.out.println(orderVO.getOrderNo() + "\t" +
                 				   orderVO.getTableId() + "\t" +
@@ -148,7 +183,8 @@ public class OrderDAO {
                                    orderVO.getPayment() + "\t" +
                                    orderVO.getPayDate());
             }
-            
+            */
+    		
             System.out.println(aList.size() + " 건이 조회되었습니다.");
             System.out.println();
 
@@ -163,7 +199,8 @@ public class OrderDAO {
     
     // 메뉴조회
     public List<OrderVO> menuSelect() {
-
+    	
+    	
         List<OrderVO> aList = new ArrayList<>();
 
         this.connect();
@@ -200,13 +237,36 @@ public class OrderDAO {
 
                 aList.add(orderVO);
             }
+            
+            final int widthId = 6;
+    		final int widthName = 20;
+    		final int widthEmoji = 20;
+    		final int widthDesc = 15;
 
-            for (OrderVO orderVO : aList) {
-                System.out.println(orderVO.getMenuId() + "\t" +
-                		orderVO.getCategoryName() + "\t" +
-                		orderVO.getMenuName() + "\t" +
-                		orderVO.getUnitPrice());
-            }
+    		String line = "-".repeat(widthId + widthName + widthEmoji + widthDesc + 5);
+
+    		System.out.println("[3.카테고리 관리]");
+    		System.out.println(line);
+    		//System.out.println("|      |              |        |                                        |");
+    		System.out.println("|" + TextUtil.padRightDisplay("번호", widthId) + "|"
+    				+ TextUtil.padRightDisplay("카테고리명", widthName) + "|" + TextUtil.padRightDisplay("메뉴명", widthEmoji)
+    				+ "|" + TextUtil.padRightDisplay("단가", widthDesc) + "|");
+    		//System.out.println("|______|______________|________|________________________________________|");
+    		System.out.println(line);
+
+    		for (OrderVO ordervo : aList) {
+    			System.out.println("|" + TextUtil.padRightDisplay(String.valueOf(ordervo.getMenuId()), widthId) + "|"
+    					+ TextUtil.padRightDisplay(ordervo.getCategoryName(), widthName) + "|"
+    					+ TextUtil.padRightDisplay(ordervo.getMenuName(), widthEmoji) + "|"
+    					+ TextUtil.padRightDisplay(ordervo.getUnitPrice(), widthDesc) + "|");
+    		}
+    		
+//            for (OrderVO orderVO : aList) {
+//                System.out.println(orderVO.getMenuId() + "\t" +
+//                		orderVO.getCategoryName() + "\t" +
+//                		orderVO.getMenuName() + "\t" +
+//                		orderVO.getUnitPrice());
+//            }
             
             System.out.println();
 

@@ -15,7 +15,7 @@ public class CategoryDAO {
 	private Connection conn = null;
 	PreparedStatement pstmt = null;
 	private ResultSet rs = null;
-	
+
 	private String Driver = "com.mysql.cj.jdbc.Driver";
 	private String Url = "jdbc:mysql://localhost:3306/pos_db";
 	private String Id = "pos";
@@ -59,10 +59,6 @@ public class CategoryDAO {
 
 	// category insert
 	public int categoryInsert(String categoryName, String categoryEmoji, String categoryDesc) {
-		System.out.println("------------------------------");
-		System.out.println(categoryName);
-		System.out.println(categoryEmoji);
-		System.out.println(categoryDesc);
 		
 		int count = -1;
 
