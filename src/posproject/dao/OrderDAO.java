@@ -20,7 +20,7 @@ public class OrderDAO {
     private ResultSet rs = null;
 
     private String driver = "com.mysql.cj.jdbc.Driver";
-    private String url = "jdbc:mysql://localhost:3306/pos_db";
+    private String url = "jdbc:mysql://192.168.0.99:3306/pos_db";
     private String id = "pos";
     private String pw = "pos";
 

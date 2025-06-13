@@ -17,7 +17,7 @@ public class CategoryDAO {
 	private ResultSet rs = null;
 
 	private String Driver = "com.mysql.cj.jdbc.Driver";
-	private String Url = "jdbc:mysql://localhost:3306/pos_db";
+	private String Url = "jdbc:mysql://192.168.0.99:3306/pos_db";
 	private String Id = "pos";
 	private String Pw = "pos";
 

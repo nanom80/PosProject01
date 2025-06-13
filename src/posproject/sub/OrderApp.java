@@ -27,7 +27,7 @@ public class OrderApp {
 		//키보드 준비 
 		//Scanner sc = new Scanner(System.in);
 		System.out.println("------------------------------------------------------------------");
-        System.out.println("|                               주문                              |");
+        System.out.println("|                               주문                             |");
         System.out.println("------------------------------------------------------------------");
         
 		while (true) {
